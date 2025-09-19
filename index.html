@@ -1,225 +1,936 @@
-<!DOCTYPE HTML>
-<!--
-	Prologue by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>myportfolio</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <!-- Other meta tags, CSS links, and scripts -->
+    <title>Praveen Kumar Yadav - Data Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #00ff88;
+            --secondary-color: #0084ff;
+            --bg-dark: #0a0e27;
+            --bg-darker: #050714;
+            --text-primary: #ffffff;
+            --text-secondary: #a8b2d1;
+            --card-bg: rgba(17, 25, 58, 0.7);
+            --hover-color: #64ffda;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: linear-gradient(180deg, #0a0e27 0%, #050714 100%);
+            overflow: hidden;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle, rgba(0, 132, 255, 0.1) 0%, transparent 50%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            background: rgba(10, 14, 39, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 15px 50px;
+            background: rgba(5, 7, 20, 0.95);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            font-weight: 500;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 50px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            text-align: center;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-size: 72px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--text-primary), var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 3s ease infinite;
+        }
+
+        @keyframes gradient {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(30deg); }
+        }
+
+        .hero-description {
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: var(--bg-dark);
+            transform: translateY(-3px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--text-primary), var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 60px;
+            font-size: 18px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image::before {
+            content: '👨‍💻';
+            position: absolute;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .about-text h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.1);
+        }
+
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--primary-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(0, 255, 136, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 50px 0;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+            margin-right: 52%;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 52%;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            width: 45%;
+        }
+
+        .timeline-date {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .timeline-content h3 {
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .timeline-content h4 {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .timeline-content ul {
+            list-style: none;
+            color: var(--text-secondary);
+        }
+
+        .timeline-content li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .timeline-content li::before {
+            content: '▸';
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 30px;
+            border: 4px solid var(--bg-dark);
+            z-index: 1;
+        }
+
+        /* Achievements Section */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .achievement-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-card::before {
+            content: '🏆';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 100px;
+            opacity: 0.1;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.1);
+        }
+
+        .achievement-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .achievement-card p {
+            color: var(--text-secondary);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .contact-item a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 255, 136, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 48px;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .about-image {
+                margin: 0 auto;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+            }
+            
+            .timeline-dot {
+                left: 30px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            section {
+                padding: 50px 20px;
+            }
+        }
+
+        /* Scroll animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
+<body>
+    <div class="bg-animation"></div>
+    
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">PK</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <p class="hero-subtitle">Welcome to my portfolio</p>
+            <h1 class="hero-title">Praveen Kumar Yadav</h1>
+            <p class="hero-description">Data Engineer II at Aidetic Software | Transforming big data into actionable insights with cutting-edge technologies</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">
+                    <span>Get In Touch</span>
+                    <span>→</span>
+                </a>
+                <a href="#experience" class="btn btn-secondary">
+                    <span>View My Work</span>
+                </a>
+            </div>
+        </div>
+    </section>
 
-<html>
-	<head>
-		<title>praveen</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+    <!-- About Section -->
+    <section id="about" class="scroll-animate">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">Passionate about data engineering and scalable solutions</p>
+        <div class="about-content">
+            <div class="about-image"></div>
+            <div class="about-text">
+                <h3>Building Data Pipelines at Scale</h3>
+                <p>I'm a Data Engineer with expertise in designing and implementing large-scale data processing systems. Graduate from MNNIT Allahabad with a B.Tech in Biotechnology, I've successfully transitioned into the data engineering field where I combine analytical thinking with technical expertise.</p>
+                <p>Currently at Aidetic Software, I'm leading critical data infrastructure projects including Apache Superset migrations and real-time streaming pipelines that process over 400 million records daily.</p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Problems Solved</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">400M+</div>
+                        <div class="stat-label">Records/Day</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">3+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-		<!-- Header -->
-			<div id="header">
+    <!-- Skills Section -->
+    <section id="skills" class="scroll-animate">
+        <h2 class="section-title">Technical Skills</h2>
+        <p class="section-subtitle">Technologies I work with</p>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Programming Languages</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">SQL (Advanced)</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">C</span>
+                    <span class="skill-tag">Cypher</span>
+                    <span class="skill-tag">PySpark</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Big Data & Tools</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Databricks</span>
+                    <span class="skill-tag">Apache Spark</span>
+                    <span class="skill-tag">Hadoop</span>
+                    <span class="skill-tag">Neo4J</span>
+                    <span class="skill-tag">Cosmos DB</span>
+                    <span class="skill-tag">Prophecy</span>
+                    <span class="skill-tag">Delta Lake</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Cloud & DevOps</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">GCP</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">BigQuery</span>
+                    <span class="skill-tag">Pub/Sub</span>
+                    <span class="skill-tag">FastAPI</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Monitoring & Analytics</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Grafana</span>
+                    <span class="skill-tag">Prometheus</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">Apache Superset</span>
+                    <span class="skill-tag">Great Expectations</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-				<div class="top">
+    <!-- Experience Section -->
+    <section id="experience" class="scroll-animate">
+        <h2 class="section-title">Experience</h2>
+        <p class="section-subtitle">My professional journey</p>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">Feb 2025 - Present</span>
+                    <h3>Data Engineer II</h3>
+                    <h4>Aidetic Software Private Limited - Bangalore</h4>
+                    <ul>
+                        <li>Led Apache Superset migration for Myntra (v1.3.2 to v4.1.2)</li>
+                        <li>Improved system performance by 20% through optimized configurations</li>
+                        <li>Engineered pipelines processing 400M+ records daily</li>
+                        <li>Implemented monitoring with Grafana and Prometheus</li>
+                        <li>Designed real-time streaming pipelines with Delta Live Tables</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">Nov 2023 - Feb 2025</span>
+                    <h3>Data Engineer I</h3>
+                    <h4>Johnson & Johnson - Remote, USA</h4>
+                    <ul>
+                        <li>Architected genealogy data model for material hierarchies</li>
+                        <li>Scaled Neo4j pipelines to load 100M+ nodes and edges</li>
+                        <li>Developed incremental data ingestion framework</li>
+                        <li>Achieved 11% improvement in ML predictive accuracy</li>
+                        <li>Engineered ETL pipelines with Prophecy</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">Jan 2023 - Nov 2023</span>
+                    <h3>Data Engineer I</h3>
+                    <h4>Vanguard Supply Chain Solutions - Remote, USA</h4>
+                    <ul>
+                        <li>Developed customized dashboards for Distribution Centre Managers</li>
+                        <li>Enhanced time efficiency by 30% through data analysis</li>
+                        <li>Implemented proactive alerts for compliance standards</li>
+                        <li>Conducted weekly assessments using Databricks</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-					<!-- Logo -->
-						<div id="logo">
-							<span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span>
-							<h1 id="title">Praveen Kumar Yadav</h1>
-							<p>Data Engineer</p>
-						</div>
+    <!-- Achievements Section -->
+    <section id="achievements" class="scroll-animate">
+        <h2 class="section-title">Achievements & Certifications</h2>
+        <p class="section-subtitle">Recognition and continuous learning</p>
+        <div class="achievements-grid">
+            <div class="achievement-card">
+                <h3>Databricks Certified</h3>
+                <p>Data Engineer Associate certification demonstrating expertise in Databricks platform</p>
+            </div>
+            <div class="achievement-card">
+                <h3>HackerRank Excellence</h3>
+                <p>5 Star in SQL & 4 Star in Python with Advanced SQL Certification</p>
+            </div>
+            <div class="achievement-card">
+                <h3>Problem Solving</h3>
+                <p>500+ problems solved on LeetCode and GeeksforGeeks platforms</p>
+            </div>
+            <div class="achievement-card">
+                <h3>Academic Excellence</h3>
+                <p>B.Tech from MNNIT Allahabad with CGPA: 7.38</p>
+            </div>
+        </div>
+    </section>
 
-					<!-- Nav -->
-						<nav id="nav">
-							<ul>
-								<li><a href="#top" id="top-link"><span class="icon solid fa-home">Intro</span></a></li>
-								<li><a href="#portfolio" id="portfolio-link"><span class="icon solid fa-th">Projects</span></a></li>
-								<li><a href="#about" id="about-link"><span class="icon solid fa-user">About Me</span></a></li>
-								<li><a href="#contact" id="contact-link"><span class="icon solid fa-envelope">Contact</span></a></li>
-							</ul>
-						</nav>
+    <!-- Contact Section -->
+    <section id="contact" class="scroll-animate">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">Let's discuss how we can work together</p>
+        <div class="contact-content">
+            <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 40px;">
+                I'm always interested in hearing about new opportunities and challenging data engineering projects. Feel free to reach out!
+            </p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <a href="mailto:praveenkumar20092000@gmail.com">praveenkumar20092000@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <a href="tel:+918418883028">+91 8418883028</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">💼</div>
+                    <a href="https://www.linkedin.com/in/praveen-kumar-yadav" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-				</div>
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Praveen Kumar Yadav. Built with passion for data engineering.</p>
+    </footer>
 
-				<div class="bottom">
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-					<!-- Social Icons -->
-						<ul class="icons">
-							<li><a href="https://www.linkedin.com/in/praveen-ma/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
-							<li><a href="https://leetcode.com/LeadShark/" class="icon brands fa-leetcode"><span class="label">Leetcode</span></a></li>
-							<li><a href="https://github.com/mr-airflow" class="icon brands fa-github"><span class="label">Github</span></a></li>
-							<li><a href="https://www.hackerrank.com/profile/praveen_2115" class="icon brands fa-hackerrank"><span class="label">HackerRank</span></a></li>
-							<li><a href="praveenkumar20092000@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-						</ul>
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
 
-				</div>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-			</div>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
 
-		<!-- Main -->
-			<div id="main">
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
 
-				<!-- Intro -->
-					<section id="top" class="one dark cover">
-						<div class="container">
+        // Timeline animations
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                    }, index * 200);
+                }
+            });
+        }, observerOptions);
 
-							<header> 
-								<h2 class="alt"><strong>Hello! I'm Data Engineer at BSY Consulting and an alumnus of NIT Allahabad.</strong>
-								<a href="#"></a> <br /> <a href="#"> </a></h2>
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            timelineObserver.observe(item);
+        });
 
-								<p><p><strong>With a passion for solving complex challenges and driving data-driven innovations,
-									 I aim to collaborate on impactful projects that inspire growth and success.</strong></p></p>
-							</header>
+        // Typing effect for hero title (optional enhancement)
+        const heroTitle = document.querySelector('.hero-title');
+        const text = heroTitle.textContent;
+        heroTitle.textContent = '';
+        let index = 0;
 
-							
+        function typeWriter() {
+            if (index < text.length) {
+                heroTitle.textContent += text.charAt(index);
+                index++;
+                setTimeout(typeWriter, 50);
+            }
+        }
 
-						</div>
-					</section>
+        // Start typing effect when page loads
+        window.addEventListener('load', () => {
+            setTimeout(typeWriter, 500);
+        });
 
-				<!-- Portfolio -->
-					<section id="portfolio" class="two">
-						<div class="container">
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero-content');
+            if (parallax) {
+                const yPos = -(scrolled * 0.5);
+                parallax.style.transform = `translateY(${yPos}px)`;
+            }
+        });
 
-							<header>
-								<u><h2><strong>Projects</strong></h2></u>
-							</header>
-
-							<p> My portfolio, you'll discover an array of challenging projects where I've seamlessly integrated 
-							   various technologies and tools. Through these endeavors, I embarked on a journey of continuous learning, 
-							   delving into intricate aspects of <strong> big data extraction, processing, and visualization</strong>. This phase of 
-							   exploration not only honed my expertise but also instilled in me invaluable insights into cloud computing, 
-							   data orchestration, and the adept manipulation of data using advanced tools such as <strong>Databricks, PySpark, Pandas, and SQL</strong>.
-
-							   Furthermore, I've cultivated proficiency in crafting compelling visual narratives through platforms like 
-							   <strong>PowerBI, Seaborn, and Matplotlib. Additionally, I excel in designing robust ETL (Extract, Transform, Load) 
-							   pipelines using Airflow and Prophecy, ensuring efficient and reliable data flow across diverse systems</strong>.</p>
-
-							<div class="row">
-								<div class="col-4 col-12-mobile">
-									<article class="item">
-										<a href="https://github.com/Mr-Airflow/My-Home-Town-Weather" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
-										<header>
-											<a href="https://github.com/Mr-Airflow/My-Home-Town-Weather">My Home Town Weather </a>
-										</header>
-									</article>
-									<article class="item">
-										<a href= "https://github.com/Mr-Airflow/Crypto-Data-Pipeline" class="image fit"><img src="images/crypto data pipeline (1).jpg" alt="" /></a>
-										<header>
-											<a href="https://github.com/Mr-Airflow/Crypto-Data-Pipeline">Crypto-Data-Pipeline</a>
-										</header>
-									</article>
-								</div>
-								<div class="col-4 col-12-mobile">
-									<article class="item">
-										<a href="https://github.com/Mr-Airflow/Vellani-Visuals-Production" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
-										<header>
-											<a href="https://github.com/Mr-Airflow/Vellani-Visuals-Production"> Vellani Visuals Productions</a>
-										</header>
-									</article>
-									<article class="item">
-										<a href="https://github.com/Mr-Airflow/The-Billionaire-s-Jet" class="image fit"><img src="images/pic05.jpg" alt="" /></a>
-										<header>
-											<a href="https://github.com/Mr-Airflow/The-Billionaire-s-Jet"> The Billionaire's Jet</a>
-										</header>
-									</article>
-								</div>
-								<div class="col-4 col-12-mobile">
-
-									<article class="item">
-										<a href="https://github.com/Mr-Airflow/Four-Brother-and-Sons" class="image fit"><img src="images/pic06.jpg" alt="" /></a>
-										<header>
-											<a href="https://github.com/Mr-Airflow/Four-Brother-and-Sons"> Four Brother and Sons store</a>
-										</header>
-
-									</article>
-									<article class="item">
-										<a href="https://github.com/Mr-Airflow/What-s-your-Favorite-Movie" class="image fit"><img src="images/pic07.jpg" alt="" /></a>
-										<header>
-											<a href="https://github.com/Mr-Airflow/What-s-your-Favorite-Movie"> What's your Favorite Movie</a>
-										</header>
-									</article>
-								</div>
-							</div>
-
-						</div>
-					</section>
-
-				<!-- About Me -->
-					<section id="about" class="three">
-						<div class="container">
-
-							<header>
-								<u><strong><h2>About me</h2></strong></u>
-							</header>
-
-							<a href="#" class="image featured"><img src="images/pic08.jpg" alt="" /></a>
-
-							<p>Praveen graduated from the Motilal Nehru National Institute of Technology in Allahabad, now known as 
-								Prayagraj. He has over a year of experience as a Data Engineer at Bsy Consulting Pvt. Ltd., 
-								where he worked with a client based in the USA, <strong>Johnson & Johnson in the Medical Technology Department.</strong>
-								Additionally, he has over eleven months of experience as a Data Analyst at Vanguard Supply Chain Solutions LLC, 
-								where he contributed to various projects. Praveen exhibits proficiency in <strong>SQL, Python, PySpark, Hadoop, 
-								Kafka, Databricks, Airflow, and AWS, Neo4j. Moreover, he demonstrates strong analytical, problem-solving, and logical 
-								thinking skills</strong>. His commendable performance is evident with a <strong>5-star ranking in SQL and a 4-star 
-								ranking in Python on HackerRank. And also solved 500+ DSA problem on Leetcode and Geeks for Geeks</strong>, reflecting his expertise in these areas.
-
-							</p>
-
-						</div>
-					</section>
-
-				<!-- Contact -->
-					<section id="contact" class="four">
-						<div class="container">
-
-							<header>
-								<h2>Contact</h2>
-							</header>
-
-							<p>Where there is will there is a way! Let's connect.</p>
-
-							<form action="https://formspree.io/f/xoqgpjvw" method="POST">
-								<div class="row">
-									<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Name" /></div>
-									<div class="col-6 col-12-mobile"><input type="text" name="email" placeholder="Email" /></div>
-									<div class="col-12">
-										<textarea name="message" placeholder="Message"></textarea>
-									</div>
-									<div class="col-12">
-										<input type="submit" value="Send Message" />
-									</div>
-								</div>
-							</form>
-
-						</div>
-					</section>
-
-			</div>
-
-		<!-- Footer -->
-			<div id="footer">
-
-				<!-- Copyright -->
-					<ul class="copyright">
-						<li>&copy; Untitled. All rights reserved.</li>
-					</ul>
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
+        // Add hover effect to skill tags
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.05)';
+            });
+            tag.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
 </html>
