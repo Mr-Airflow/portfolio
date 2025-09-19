@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Praveen Kumar Yadav - Data Engineer</title>
+    <title>Praveen Kumar Yadav - Senior Data Engineer | Big Data | Cloud | ML Engineering</title>
+    <meta name="description" content="Senior Data Engineer specializing in Databricks, Apache Spark, ETL pipelines, Big Data, Cloud Computing (AWS, GCP), and Machine Learning Engineering. Expert in processing 400M+ records daily.">
+    <meta name="keywords" content="Data Engineer, Databricks, Apache Spark, PySpark, Big Data, ETL, Data Pipeline, Cloud Computing, AWS, GCP, Machine Learning, Neo4j, Graph Database, SQL, Python, Real-time Streaming, Delta Lake, Bangalore, India">
+    <meta name="author" content="Praveen Kumar Yadav">
+    <meta property="og:title" content="Praveen Kumar Yadav - Senior Data Engineer Portfolio">
+    <meta property="og:description" content="Experienced Data Engineer with expertise in building scalable data pipelines processing 400M+ records daily">
     <style>
         * {
             margin: 0;
@@ -14,6 +19,7 @@
         :root {
             --primary-color: #00ff88;
             --secondary-color: #0084ff;
+            --accent-color: #ff6b6b;
             --bg-dark: #0a0e27;
             --bg-darker: #050714;
             --text-primary: #ffffff;
@@ -55,6 +61,33 @@
             animation: rotate 30s linear infinite;
         }
 
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float-up 10s linear infinite;
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
         @keyframes rotate {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
@@ -75,6 +108,7 @@
         nav.scrolled {
             padding: 15px 50px;
             background: rgba(5, 7, 20, 0.95);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .nav-container {
@@ -91,6 +125,7 @@
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            cursor: pointer;
         }
 
         .nav-links {
@@ -124,6 +159,21 @@
 
         .nav-links a:hover::after {
             width: 100%;
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 2px;
+            background: var(--primary-color);
+            transition: all 0.3s ease;
         }
 
         /* Hero Section */
@@ -179,10 +229,33 @@
         .hero-description {
             font-size: 20px;
             color: var(--text-secondary);
-            margin-bottom: 40px;
-            max-width: 600px;
+            margin-bottom: 30px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        .hero-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .keyword-tag {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         .hero-buttons {
@@ -316,6 +389,115 @@
             font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 1px;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        .project-header {
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 132, 255, 0.1));
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-company {
+            color: var(--secondary-color);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .project-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .project-metrics {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .metric {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .project-body {
+            padding: 30px;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .project-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .project-features li {
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .project-features li::before {
+            content: '→';
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-tag {
+            background: rgba(0, 132, 255, 0.1);
+            color: var(--secondary-color);
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            border: 1px solid rgba(0, 132, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: rgba(0, 132, 255, 0.2);
+            transform: translateY(-2px);
         }
 
         /* Skills Section */
@@ -469,7 +651,7 @@
         /* Achievements Section */
         .achievements-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
 
@@ -506,6 +688,17 @@
 
         .achievement-card p {
             color: var(--text-secondary);
+        }
+
+        .certification-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            margin-top: 10px;
+            font-weight: 600;
         }
 
         /* Contact Section */
@@ -562,9 +755,17 @@
             .nav-links {
                 display: none;
             }
+
+            .mobile-menu {
+                display: flex;
+            }
             
             .hero-title {
                 font-size: 48px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
             }
             
             .about-content {
@@ -613,7 +814,14 @@
     </style>
 </head>
 <body>
-    <div class="bg-animation"></div>
+    <div class="bg-animation">
+        <!-- Floating particles -->
+        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 50%; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 70%; animation-delay: 6s;"></div>
+        <div class="particle" style="left: 90%; animation-delay: 8s;"></div>
+    </div>
     
     <!-- Navigation -->
     <nav id="navbar">
@@ -622,27 +830,43 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#experience">Experience</a></li>
-                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#achievements">Certifications</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <p class="hero-subtitle">Welcome to my portfolio</p>
+            <p class="hero-subtitle">Senior Data Engineer | Big Data Architect</p>
             <h1 class="hero-title">Praveen Kumar Yadav</h1>
-            <p class="hero-description">Data Engineer II at Aidetic Software | Transforming big data into actionable insights with cutting-edge technologies</p>
+            <p class="hero-description">Transforming big data into actionable insights | Expert in Databricks, Apache Spark & Cloud Engineering | Processing 400M+ records daily with optimized ETL pipelines</p>
+            <div class="hero-keywords">
+                <span class="keyword-tag">Data Engineering</span>
+                <span class="keyword-tag">Databricks</span>
+                <span class="keyword-tag">Apache Spark</span>
+                <span class="keyword-tag">Real-time Streaming</span>
+                <span class="keyword-tag">Cloud Architecture</span>
+                <span class="keyword-tag">ML Engineering</span>
+                <span class="keyword-tag">ETL Pipelines</span>
+                <span class="keyword-tag">Big Data</span>
+            </div>
             <div class="hero-buttons">
                 <a href="#contact" class="btn btn-primary">
                     <span>Get In Touch</span>
                     <span>→</span>
                 </a>
-                <a href="#experience" class="btn btn-secondary">
-                    <span>View My Work</span>
+                <a href="#projects" class="btn btn-secondary">
+                    <span>View My Projects</span>
                 </a>
             </div>
         </div>
@@ -651,17 +875,17 @@
     <!-- About Section -->
     <section id="about" class="scroll-animate">
         <h2 class="section-title">About Me</h2>
-        <p class="section-subtitle">Passionate about data engineering and scalable solutions</p>
+        <p class="section-subtitle">Data Engineer specializing in scalable big data solutions</p>
         <div class="about-content">
             <div class="about-image"></div>
             <div class="about-text">
-                <h3>Building Data Pipelines at Scale</h3>
-                <p>I'm a Data Engineer with expertise in designing and implementing large-scale data processing systems. Graduate from MNNIT Allahabad with a B.Tech in Biotechnology, I've successfully transitioned into the data engineering field where I combine analytical thinking with technical expertise.</p>
-                <p>Currently at Aidetic Software, I'm leading critical data infrastructure projects including Apache Superset migrations and real-time streaming pipelines that process over 400 million records daily.</p>
+                <h3>Building Enterprise-Scale Data Infrastructure</h3>
+                <p>I'm a Senior Data Engineer with deep expertise in designing, implementing, and optimizing large-scale data processing systems. Graduate from MNNIT Allahabad with a B.Tech in Biotechnology, I've successfully transitioned into data engineering where I combine analytical thinking with cutting-edge technical expertise.</p>
+                <p>Currently at Aidetic Software, I'm leading critical data infrastructure projects including Apache Superset migrations for major e-commerce platforms and real-time streaming pipelines processing over 400 million records daily. My work spans across the entire data lifecycle - from ingestion and processing to visualization and ML model deployment.</p>
                 <div class="stats">
                     <div class="stat-item">
                         <div class="stat-number">500+</div>
-                        <div class="stat-label">Problems Solved</div>
+                        <div class="stat-label">LeetCode/GFG</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-number">400M+</div>
@@ -676,33 +900,245 @@
         </div>
     </section>
 
+    <!-- Projects Section -->
+    <section id="projects" class="scroll-animate">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">High-impact data engineering projects with measurable business outcomes</p>
+        <div class="projects-grid">
+            <!-- Myntra Superset Migration -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-company">Aidetic Software - Myntra</div>
+                    <h3 class="project-title">Apache Superset Enterprise Migration</h3>
+                    <div class="project-metrics">
+                        <span class="metric">📊 20% Performance Gain</span>
+                        <span class="metric">⚡ v1.3.2 → v4.1.2</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">Led end-to-end migration of Apache Superset for Myntra's analytics platform, ensuring seamless transition of all critical business intelligence infrastructure.</p>
+                    <ul class="project-features">
+                        <li>Migrated complete metadata including dashboards, charts, roles, and access controls</li>
+                        <li>Implemented comprehensive monitoring using Grafana and Prometheus for Redis metrics</li>
+                        <li>Deployed Flower for Celery worker monitoring and performance optimization</li>
+                        <li>Reduced dashboard load times by 20% through optimized configurations</li>
+                        <li>Ensured zero-downtime migration for 1000+ active users</li>
+                    </ul>
+                    <div class="project-tech">
+                        <span class="tech-tag">Apache Superset</span>
+                        <span class="tech-tag">Grafana</span>
+                        <span class="tech-tag">Prometheus</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">Celery</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Real-time Streaming Pipeline -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-company">Aidetic Software</div>
+                    <h3 class="project-title">Real-time Data Streaming Infrastructure</h3>
+                    <div class="project-metrics">
+                        <span class="metric">🚀 400M+ Records/Day</span>
+                        <span class="metric">⏱️ Low-latency</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">Engineered enterprise-scale real-time streaming data pipelines to process massive data volumes with guaranteed SLA adherence.</p>
+                    <ul class="project-features">
+                        <li>Designed real-time pipelines using Databricks Delta Live Tables (DLT)</li>
+                        <li>Integrated Google Pub/Sub for event streaming with exactly-once semantics</li>
+                        <li>Implemented robust data quality checks ensuring 99.9% data accuracy</li>
+                        <li>Optimized storage using Z-ordering and file compaction techniques</li>
+                        <li>Achieved sub-second latency for critical business metrics</li>
+                        <li>Built auto-scaling infrastructure to handle peak loads efficiently</li>
+                    </ul>
+                    <div class="project-tech">
+                        <span class="tech-tag">Databricks DLT</span>
+                        <span class="tech-tag">Google Pub/Sub</span>
+                        <span class="tech-tag">Delta Lake</span>
+                        <span class="tech-tag">Apache Spark</span>
+                        <span class="tech-tag">PySpark</span>
+                        <span class="tech-tag">Stream Processing</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Genealogy Trace Project -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-company">Johnson & Johnson</div>
+                    <h3 class="project-title">Material Genealogy Trace System</h3>
+                    <div class="project-metrics">
+                        <span class="metric">🔍 100M+ Nodes</span>
+                        <span class="metric">🎯 Graph Analytics</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">Developed advanced genealogy model to trace complex material hierarchies, enabling complete supply chain visibility for pharmaceutical products.</p>
+                    <ul class="project-features">
+                        <li>Architected genealogy data model for parent-child relationship analysis</li>
+                        <li>Created scalable data objects using SparkSQL and PySpark on SAP/JDE data</li>
+                        <li>Developed Data Object Mapping Documents (DOMDs) for source-to-target mappings</li>
+                        <li>Built efficient ETL pipelines in Prophecy for Connected Data Model</li>
+                        <li>Utilized Neo4j connector for Apache Spark to load graph data</li>
+                        <li>Established complex parent-child relationships for material traceability</li>
+                        <li>Scaled to process 100M+ nodes and edges with optimized Cypher queries</li>
+                    </ul>
+                    <div class="project-tech">
+                        <span class="tech-tag">Neo4j</span>
+                        <span class="tech-tag">Graph Database</span>
+                        <span class="tech-tag">Databricks</span>
+                        <span class="tech-tag">SparkSQL</span>
+                        <span class="tech-tag">PySpark</span>
+                        <span class="tech-tag">Prophecy</span>
+                        <span class="tech-tag">SAP</span>
+                        <span class="tech-tag">JDE</span>
+                        <span class="tech-tag">Cypher</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Trace Project -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-company">Johnson & Johnson</div>
+                    <h3 class="project-title">Product Trace & ML Pipeline</h3>
+                    <div class="project-metrics">
+                        <span class="metric">⚡ 30% Faster</span>
+                        <span class="metric">🎯 11% ML Accuracy</span>
+                        <span class="metric">💰 Cost Optimized</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">Designed high-efficiency data pipeline for product traceability with integrated machine learning capabilities, significantly improving operational efficiency.</p>
+                    <ul class="project-features">
+                        <li>Reduced data processing time by 30% and optimized ingestion costs</li>
+                        <li>Built complete data objects using SQL on SAP data in Databricks</li>
+                        <li>Developed Automated Data Validation Module with 90%+ efficiency boost</li>
+                        <li>Conducted rigorous Robot Testing ensuring data integrity</li>
+                        <li>Led UAT in QA and production environments for seamless integration</li>
+                        <li>Enabled ML model training improving predictive accuracy by 11%</li>
+                        <li>Implemented incremental data ingestion with efficient upsert mechanisms</li>
+                    </ul>
+                    <div class="project-tech">
+                        <span class="tech-tag">Databricks</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">PySpark</span>
+                        <span class="tech-tag">SAP</span>
+                        <span class="tech-tag">Prophecy</span>
+                        <span class="tech-tag">Data Validation</span>
+                        <span class="tech-tag">ETL</span>
+                        <span class="tech-tag">UAT</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Migration Tool -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-company">Aidetic Software</div>
+                    <h3 class="project-title">Unified Auto Data Migration Platform</h3>
+                    <div class="project-metrics">
+                        <span class="metric">🔄 Multi-source</span>
+                        <span class="metric">⚡ Automated</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">Contributed to developing a unified migration tool enabling seamless data transfer from various sources to Databricks with automatic SQL conversion.</p>
+                    <ul class="project-features">
+                        <li>Automated migration from BigQuery, Snowflake, and other data warehouses</li>
+                        <li>Implemented automatic SQL syntax conversion to Spark SQL</li>
+                        <li>Migrated large-scale datasets to Databricks Delta Lake</li>
+                        <li>Optimized storage using Delta Lake features and schema evolution</li>
+                        <li>Built metadata preservation and validation framework</li>
+                    </ul>
+                    <div class="project-tech">
+                        <span class="tech-tag">Databricks</span>
+                        <span class="tech-tag">BigQuery</span>
+                        <span class="tech-tag">Delta Lake</span>
+                        <span class="tech-tag">Spark SQL</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Data Migration</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Supply Chain Analytics -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-company">Vanguard Supply Chain</div>
+                    <h3 class="project-title">Supply Chain Analytics Dashboard</h3>
+                    <div class="project-metrics">
+                        <span class="metric">📈 30% Efficiency</span>
+                        <span class="metric">🚛 Fleet Analytics</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">Developed comprehensive analytics platform for Distribution Centre operations, enabling data-driven decision making and compliance monitoring.</p>
+                    <ul class="project-features">
+                        <li>Built customized dashboards for Distribution Centre Managers</li>
+                        <li>Analyzed driver performance metrics and fleet utilization</li>
+                        <li>Enhanced operational efficiency by 30% through data insights</li>
+                        <li>Implemented proactive alerting for compliance standards</li>
+                        <li>Conducted weekly assessments using Databricks analytics</li>
+                    </ul>
+                    <div class="project-tech">
+                        <span class="tech-tag">Databricks</span>
+                        <span class="tech-tag">Power BI</span>
+                        <span class="tech-tag">SQL Analytics</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Dashboard Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Skills Section -->
     <section id="skills" class="scroll-animate">
-        <h2 class="section-title">Technical Skills</h2>
-        <p class="section-subtitle">Technologies I work with</p>
+        <h2 class="section-title">Technical Expertise</h2>
+        <p class="section-subtitle">Comprehensive skill set in modern data engineering technologies</p>
         <div class="skills-grid">
             <div class="skill-category">
-                <h3>Programming Languages</h3>
+                <h3>Programming & Query Languages</h3>
                 <div class="skill-tags">
                     <span class="skill-tag">Python</span>
                     <span class="skill-tag">SQL (Advanced)</span>
+                    <span class="skill-tag">PySpark</span>
                     <span class="skill-tag">Java</span>
                     <span class="skill-tag">C++</span>
                     <span class="skill-tag">C</span>
                     <span class="skill-tag">Cypher</span>
-                    <span class="skill-tag">PySpark</span>
+                    <span class="skill-tag">Spark SQL</span>
                 </div>
             </div>
             <div class="skill-category">
-                <h3>Big Data & Tools</h3>
+                <h3>Big Data & Platforms</h3>
                 <div class="skill-tags">
                     <span class="skill-tag">Databricks</span>
                     <span class="skill-tag">Apache Spark</span>
                     <span class="skill-tag">Hadoop</span>
-                    <span class="skill-tag">Neo4J</span>
-                    <span class="skill-tag">Cosmos DB</span>
-                    <span class="skill-tag">Prophecy</span>
                     <span class="skill-tag">Delta Lake</span>
+                    <span class="skill-tag">Delta Live Tables</span>
+                    <span class="skill-tag">Prophecy</span>
+                    <span class="skill-tag">Apache Superset</span>
+                    <span class="skill-tag">Kafka</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Databases & Storage</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Neo4j</span>
+                    <span class="skill-tag">Cosmos DB</span>
+                    <span class="skill-tag">BigQuery</span>
+                    <span class="skill-tag">Delta Lake</span>
+                    <span class="skill-tag">Graph Database</span>
+                    <span class="skill-tag">NoSQL</span>
+                    <span class="skill-tag">Data Warehousing</span>
                 </div>
             </div>
             <div class="skill-category">
@@ -711,18 +1147,33 @@
                     <span class="skill-tag">AWS</span>
                     <span class="skill-tag">GCP</span>
                     <span class="skill-tag">Docker</span>
-                    <span class="skill-tag">BigQuery</span>
-                    <span class="skill-tag">Pub/Sub</span>
+                    <span class="skill-tag">Kubernetes</span>
+                    <span class="skill-tag">CI/CD</span>
+                    <span class="skill-tag">Bitbucket</span>
+                    <span class="skill-tag">Git</span>
                     <span class="skill-tag">FastAPI</span>
                 </div>
             </div>
             <div class="skill-category">
-                <h3>Monitoring & Analytics</h3>
+                <h3>Monitoring & Visualization</h3>
                 <div class="skill-tags">
                     <span class="skill-tag">Grafana</span>
                     <span class="skill-tag">Prometheus</span>
                     <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">Tableau</span>
                     <span class="skill-tag">Apache Superset</span>
+                    <span class="skill-tag">Flower</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>AI/ML & Analytics</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">NumPy</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">Matplotlib</span>
+                    <span class="skill-tag">Seaborn</span>
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">Data Modelling</span>
                     <span class="skill-tag">Great Expectations</span>
                 </div>
             </div>
@@ -731,8 +1182,8 @@
 
     <!-- Experience Section -->
     <section id="experience" class="scroll-animate">
-        <h2 class="section-title">Experience</h2>
-        <p class="section-subtitle">My professional journey</p>
+        <h2 class="section-title">Professional Experience</h2>
+        <p class="section-subtitle">Progressive career growth in data engineering</p>
         <div class="timeline">
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
@@ -743,9 +1194,10 @@
                     <ul>
                         <li>Led Apache Superset migration for Myntra (v1.3.2 to v4.1.2)</li>
                         <li>Improved system performance by 20% through optimized configurations</li>
-                        <li>Engineered pipelines processing 400M+ records daily</li>
-                        <li>Implemented monitoring with Grafana and Prometheus</li>
-                        <li>Designed real-time streaming pipelines with Delta Live Tables</li>
+                        <li>Engineered pipelines processing 400M+ records daily with low-latency</li>
+                        <li>Implemented comprehensive monitoring with Grafana and Prometheus</li>
+                        <li>Designed real-time streaming pipelines using Delta Live Tables</li>
+                        <li>Developed unified auto data migration tool for multi-source transfers</li>
                     </ul>
                 </div>
             </div>
@@ -756,11 +1208,12 @@
                     <h3>Data Engineer I</h3>
                     <h4>Johnson & Johnson - Remote, USA</h4>
                     <ul>
-                        <li>Architected genealogy data model for material hierarchies</li>
-                        <li>Scaled Neo4j pipelines to load 100M+ nodes and edges</li>
-                        <li>Developed incremental data ingestion framework</li>
-                        <li>Achieved 11% improvement in ML predictive accuracy</li>
-                        <li>Engineered ETL pipelines with Prophecy</li>
+                        <li>Architected advanced genealogy data model for material hierarchies</li>
+                        <li>Scaled Neo4j pipelines to load 100M+ nodes and edges efficiently</li>
+                        <li>Developed incremental data ingestion framework with upsert mechanisms</li>
+                        <li>Achieved 11% improvement in ML model predictive accuracy</li>
+                        <li>Engineered ETL pipelines using Prophecy for graph database integration</li>
+                        <li>Led UAT in QA and production environments</li>
                     </ul>
                 </div>
             </div>
@@ -772,9 +1225,10 @@
                     <h4>Vanguard Supply Chain Solutions - Remote, USA</h4>
                     <ul>
                         <li>Developed customized dashboards for Distribution Centre Managers</li>
-                        <li>Enhanced time efficiency by 30% through data analysis</li>
-                        <li>Implemented proactive alerts for compliance standards</li>
-                        <li>Conducted weekly assessments using Databricks</li>
+                        <li>Enhanced time efficiency by 30% through truck log data analysis</li>
+                        <li>Implemented proactive alerts for animal welfare compliance</li>
+                        <li>Conducted monthly evaluations of Distribution Centre performance</li>
+                        <li>Built analytics solutions using Databricks and Power BI</li>
                     </ul>
                 </div>
             </div>
@@ -783,35 +1237,42 @@
 
     <!-- Achievements Section -->
     <section id="achievements" class="scroll-animate">
-        <h2 class="section-title">Achievements & Certifications</h2>
-        <p class="section-subtitle">Recognition and continuous learning</p>
+        <h2 class="section-title">Certifications & Achievements</h2>
+        <p class="section-subtitle">Continuous learning and professional development</p>
         <div class="achievements-grid">
             <div class="achievement-card">
                 <h3>Databricks Certified</h3>
-                <p>Data Engineer Associate certification demonstrating expertise in Databricks platform</p>
+                <p>Data Engineer Associate certification demonstrating expertise in Databricks platform and Apache Spark</p>
+                <span class="certification-badge">ASSOCIATE</span>
+            </div>
+            <div class="achievement-card">
+                <h3>Databricks Certified</h3>
+                <p>Data Engineer Professional certification showcasing advanced skills in data engineering and architecture</p>
+                <span class="certification-badge">PROFESSIONAL</span>
             </div>
             <div class="achievement-card">
                 <h3>HackerRank Excellence</h3>
-                <p>5 Star in SQL & 4 Star in Python with Advanced SQL Certification</p>
+                <p>5 Star in SQL & 4 Star in Python with Advanced SQL Certification, demonstrating strong problem-solving abilities</p>
+                <span class="certification-badge">SQL ADVANCED</span>
             </div>
             <div class="achievement-card">
-                <h3>Problem Solving</h3>
-                <p>500+ problems solved on LeetCode and GeeksforGeeks platforms</p>
+                <h3>Competitive Programming</h3>
+                <p>500+ problems solved on LeetCode and GeeksforGeeks platforms, showcasing algorithmic thinking</p>
             </div>
             <div class="achievement-card">
                 <h3>Academic Excellence</h3>
-                <p>B.Tech from MNNIT Allahabad with CGPA: 7.38</p>
+                <p>B.Tech in Biotechnology from MNNIT Allahabad (2019-2023) with CGPA: 7.38</p>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="scroll-animate">
-        <h2 class="section-title">Get In Touch</h2>
-        <p class="section-subtitle">Let's discuss how we can work together</p>
+        <h2 class="section-title">Let's Connect</h2>
+        <p class="section-subtitle">Open to discussing data engineering opportunities and collaborations</p>
         <div class="contact-content">
             <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 40px;">
-                I'm always interested in hearing about new opportunities and challenging data engineering projects. Feel free to reach out!
+                I'm passionate about solving complex data challenges and building scalable infrastructure. Whether you need expertise in real-time streaming, data warehouse migration, or ML pipeline development, let's discuss how I can contribute to your team's success.
             </p>
             <div class="contact-info">
                 <div class="contact-item">
@@ -824,7 +1285,7 @@
                 </div>
                 <div class="contact-item">
                     <div class="contact-icon">💼</div>
-                    <a href="https://www.linkedin.com/in/praveen-kumar-yadav" target="_blank">LinkedIn</a>
+                    <a href="https://www.linkedin.com/in/praveen-kumar-yadav" target="_blank">LinkedIn Profile</a>
                 </div>
             </div>
         </div>
@@ -832,7 +1293,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>© 2025 Praveen Kumar Yadav. Built with passion for data engineering.</p>
+        <p>© 2025 Praveen Kumar Yadav | Senior Data Engineer | Built with passion for data engineering excellence</p>
     </footer>
 
     <script>
@@ -893,7 +1354,7 @@
             timelineObserver.observe(item);
         });
 
-        // Typing effect for hero title (optional enhancement)
+        // Typing effect for hero title
         const heroTitle = document.querySelector('.hero-title');
         const text = heroTitle.textContent;
         heroTitle.textContent = '';
@@ -923,7 +1384,7 @@
         });
 
         // Add hover effect to skill tags
-        document.querySelectorAll('.skill-tag').forEach(tag => {
+        document.querySelectorAll('.skill-tag, .tech-tag, .keyword-tag').forEach(tag => {
             tag.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-5px) scale(1.05)';
             });
@@ -931,6 +1392,67 @@
                 this.style.transform = 'translateY(0) scale(1)';
             });
         });
+
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu?.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '60px';
+            navLinks.style.right = '20px';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.background = 'var(--card-bg)';
+            navLinks.style.padding = '20px';
+            navLinks.style.borderRadius = '10px';
+        });
+
+        // Project card hover effect
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Count animation for stats
+        function animateCount(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = current >= 1000000 
+                    ? (current / 1000000).toFixed(0) + 'M+' 
+                    : current >= 1000 
+                    ? (current / 1000).toFixed(0) + 'K+' 
+                    : Math.floor(current) + '+';
+            }, 20);
+        }
+
+        // Trigger count animation when stats section is visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers[0] && animateCount(statNumbers[0], 500);
+                    statNumbers[1] && animateCount(statNumbers[1], 400000000);
+                    statNumbers[2] && animateCount(statNumbers[2], 3);
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
     </script>
 </body>
 </html>
